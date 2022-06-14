@@ -34,6 +34,12 @@
 			rankList.push(rankListItem);
 		}
 	})
+
+	function toRecommendSong() {
+		uni.navigateTo({
+			url: "pages/recommendSong/recommendSong";
+		})
+	}
 </script>
 
 <template>
@@ -46,7 +52,7 @@
 		</swiper>
 		<!-- 导航 -->
 		<view class="nav-container">
-			<view class="nav-item">
+			<view class="nav-item" @tap="toRecommendSong">
 				<text class="iconfont icon-meirituijian"></text>
 				<text>每日推荐</text>
 			</view>

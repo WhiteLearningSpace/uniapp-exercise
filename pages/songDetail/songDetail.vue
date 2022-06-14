@@ -125,6 +125,11 @@
 		currentTime.value = dateFormat(backgroundAudioManager.currentTime * 1000);
 		currentWidth.value = backgroundAudioManager.currentTime / backgroundAudioManager.duration * 450;
 	});
+	backgroundAudioManager.onEnded(() => {
+		handleSwitchMusic("next");
+		currentWidth.value = 0;
+		currentTime.value = "00:00";
+	});
 
 	// 切换歌曲
 	function handleSwitchMusic(type) {

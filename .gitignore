@@ -3,3 +3,8 @@
 /.idea/
 /unpackage/
 
+/硅谷音乐_server/.DS_Store/
+/硅谷音乐_server/node_modules/
+/硅谷音乐_server/*.log/
+/硅谷音乐_server/.idea/
+/硅谷音乐_server/.vscode/
