@@ -1,43 +1,8 @@
-<template>
-	<view class="container">
-		<!-- bug: https://blog.csdn.net/weixin_39818813/article/details/99777266 -->
-		<view class="author">{{ song.ar && song.ar[0].name }}</view>
-		<view class="circle"></view>
-		<image class="needle" :class="{'needle-rotate':isPlay}" src="/static/images/song/needle.png"></image>
-
-		<!-- 磁盘区 -->
-		<view class="disc-container" :class="{'disc-animation':isPlay}">
-			<image class="disc" src="/static/images/song/disc.png"></image>
-			<image class="music-img" :src="song.al&&song.al.picUrl"></image>
-		</view>
-
-		<!-- 进度条控制区 -->
-		<view class="progress-container">
-			<text>{{ currentTime }}</text>
-			<view class="bar">
-				<view class="current-time-bar" :style="{width:`${currentWidth}px`}">
-					<view class="audio-circle"></view>
-				</view>
-			</view>
-			<text>{{ durationTime }}</text>
-		</view>
-
-		<!-- 底部控制区 -->
-		<view class="music-control">
-			<text class="iconfont icon-iconsMusicyemianbofangmoshiShuffle"></text>
-			<text class="iconfont icon-shangyishou" @tap="handleSwitchMusic('pre')"></text>
-			<text @tap="handleMusicPlay" class="iconfont big"
-				:class="{'icon-bofang':!isPlay,'icon-zanting':isPlay}"></text>
-			<text class="iconfont icon-next" @tap="handleSwitchMusic('next')"></text>
-			<text class="iconfont icon-iconsMusicyemianbofangmoshiPlayList"></text>
-		</view>
-	</view>
-</template>
-
 <script setup>
 	import {
 		ref,
-		reactive
+		reactive,
+		watch
 	} from "vue";
 	import {
 		onLoad
@@ -54,7 +19,7 @@
 	const song = reactive({});
 	const currentTime = ref("00:00");
 	const durationTime = ref("03:00");
-	const currentWidth = ref(0)
+	const currentWidth = ref(0);
 
 	onLoad((options) => {
 		getMusicInfo(options.id)
@@ -140,10 +105,46 @@
 	}
 
 	uni.$on("musicId", function(data) {
-		controlMusic(false);
+		controlMusic(true);
 		getMusicInfo(data.id);
 	});
 </script>
+
+<template>
+	<view class="container">
+		<!-- bug: https://blog.csdn.net/weixin_39818813/article/details/99777266 -->
+		<view class="author">{{ song.ar && song.ar[0].name }}</view>
+		<view class="circle"></view>
+		<image class="needle" :class="{'needle-rotate':isPlay}" src="/static/images/song/needle.png"></image>
+
+		<!-- 磁盘区 -->
+		<view class="disc-container" :class="{'disc-animation':isPlay}">
+			<image class="disc" src="/static/images/song/disc.png"></image>
+			<image class="music-img" :src="song.al&&song.al.picUrl"></image>
+		</view>
+
+		<!-- 进度条控制区 -->
+		<view class="progress-container">
+			<text>{{ currentTime }}</text>
+			<view class="bar">
+				<view class="current-time-bar" :style="{width:`${currentWidth}rpx`}">
+					<view class="audio-circle"></view>
+				</view>
+			</view>
+			<text>{{ durationTime }}</text>
+		</view>
+
+		<!-- 底部控制区 -->
+		<view class="music-control">
+			<text class="iconfont icon-iconsMusicyemianbofangmoshiShuffle"></text>
+			<text class="iconfont icon-shangyishou" @tap="handleSwitchMusic('pre')"></text>
+			<text @tap="handleMusicPlay" class="iconfont big"
+				:class="{'icon-bofang':!isPlay,'icon-zanting':isPlay}"></text>
+			<text class="iconfont icon-next" @tap="handleSwitchMusic('next')"></text>
+			<text class="iconfont icon-iconsMusicyemianbofangmoshiPlayList"></text>
+		</view>
+	</view>
+</template>
 
 <style scoped>
 	.container {

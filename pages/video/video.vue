@@ -2,7 +2,7 @@
 	<view class="video-container">
 		<view class="header">
 			<image src="/static/images/video/video.jpg"></image>
-			<view class="search">搜索商品</view>
+			<view class="search" @tap="toSearch">搜索音乐</view>
 			<image src="/static/images/logo.png"></image>
 		</view>
 		<!-- 导航区 -->
@@ -78,10 +78,15 @@
 		})
 	}
 
-
-	getVideoGroupList();
+	// 跳转到搜索页面
+	function toSearch() {
+		uni.navigateTo({
+			url: "/pages/search/search"
+		});
+	}
 
 	// 控制视频列表切换与加载
+	getVideoGroupList();
 	async function getVideoGroupList() {
 		let videoGroupListData = await request("/video/group/list");
 		Object.assign(videoGroupList, videoGroupListData.data.slice(0, 14));

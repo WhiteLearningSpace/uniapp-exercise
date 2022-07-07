@@ -6,14 +6,9 @@
 				"navigationBarTitleText": "云音乐"
 			}
 		}, {
-			"path": "pages/recommendSong/recommendSong",
+			"path": "pages/search/search",
 			"style": {
-				"navigationBarTitleText": "每日推荐"
-			}
-		}, {
-			"path": "pages/songDetail/songDetail",
-			"style": {
-				"navigationBarTitleText": "播放"
+				"navigationBarTitleText": "搜索"
 			}
 		}, {
 			"path": "pages/video/video",
@@ -21,9 +16,11 @@
 				"navigationBarTitleText": "视频"
 			}
 		}, {
-			"path": "pages/search/search",
+			"path": "pages/songDetail/songDetail"
+		}, {
+			"path": "pages/recommendSong/recommendSong",
 			"style": {
-				"navigationBarTitleText": "搜索"
+				"navigationBarTitleText": "每日推荐"
 			}
 		}, {
 			"path": "pages/personal/personal",

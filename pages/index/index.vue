@@ -37,7 +37,7 @@
 
 	function toRecommendSong() {
 		uni.navigateTo({
-			url: "pages/recommendSong/recommendSong";
+			url: "/pages/recommendSong/recommendSong"
 		})
 	}
 </script>
